@@ -7,6 +7,7 @@ public class Telefono_trainer
     //llave primaria compuestas
     public string ? Id_trainer { get; set; }
     public string ? Id_telefono { get; set; }
+    public string ? Numero_telefono { get; set; }
 
     //definimos las referencias a la entidad
     public Trainer ? Trainer { get; set; }

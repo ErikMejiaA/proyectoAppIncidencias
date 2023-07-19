@@ -1,3 +1,4 @@
+using API.Extensions;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.ConfigureCors(); //configuramos las cors para los endpoint 
 
 //creamos las dependecias y la conexion a la base de datos 
 builder.Services.AddDbContext<proyectoAppInsidenciasContext>(optionsBuilder =>
@@ -44,6 +46,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 

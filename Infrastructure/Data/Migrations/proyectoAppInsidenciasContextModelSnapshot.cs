@@ -72,11 +72,6 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Email_correo")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
                     b.Property<string>("Tipo_email")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -84,10 +79,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id_email");
 
-                    b.HasIndex("Email_correo")
-                        .IsUnique();
-
-                    b.ToTable("Emails", (string)null);
+                    b.ToTable("Tipos_emails", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Email_trainer", b =>
@@ -98,7 +90,15 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("Id_trainer")
                         .HasColumnType("varchar(10)");
 
+                    b.Property<string>("Email_correo")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
                     b.HasKey("Id_email", "Id_trainer");
+
+                    b.HasIndex("Email_correo")
+                        .IsUnique();
 
                     b.HasIndex("Id_trainer");
 
@@ -276,11 +276,6 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Numero_telefono")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
-
                     b.Property<string>("Tipo_telefono")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -288,10 +283,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id_telefono");
 
-                    b.HasIndex("Numero_telefono")
-                        .IsUnique();
-
-                    b.ToTable("Telefonos", (string)null);
+                    b.ToTable("Tipos_telefonos", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Telefono_trainer", b =>
@@ -302,9 +294,17 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("Id_trainer")
                         .HasColumnType("varchar(10)");
 
+                    b.Property<string>("Numero_telefono")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
                     b.HasKey("Id_telefono", "Id_trainer");
 
                     b.HasIndex("Id_trainer");
+
+                    b.HasIndex("Numero_telefono")
+                        .IsUnique();
 
                     b.ToTable("Telefonos_trainers", (string)null);
                 });

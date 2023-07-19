@@ -11,18 +11,11 @@ public class TelefonoConfiguration : IEntityTypeConfiguration<Telefono>
     {
         //definimos las propiedades de los atributos d ela entidad 
 
-        builder.ToTable("Telefonos");
+        builder.ToTable("Tipos_telefonos");
 
         builder.Property(p => p.Id_telefono)
         .IsRequired()
         .HasMaxLength(10);
-
-        builder.Property(p => p.Numero_telefono)
-        .IsRequired()
-        .HasMaxLength(20);
-
-        builder.HasIndex(p => p.Numero_telefono)
-        .IsUnique();
 
         builder.Property(p => p.Tipo_telefono)
         .IsRequired()

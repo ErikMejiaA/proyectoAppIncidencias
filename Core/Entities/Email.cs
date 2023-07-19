@@ -8,7 +8,6 @@ public class Email
     //atributos de la entidad
     [Key]
     public string ? Id_email { get; set; }
-    public string ? Email_correo { get; set; }
     public string ? Tipo_email { get; set; }
     public string ? Descripcion { get; set; }
 

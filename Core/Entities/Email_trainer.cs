@@ -7,6 +7,7 @@ public class Email_trainer
     //llave primaria compuesta
     public string ? Id_trainer { get; set; }
     public string ? Id_email { get; set; }
+    public string ? Email_correo { get; set; }
 
     //definimos las referencias a la entidad 
     public Trainer ? Trainer { get; set; }

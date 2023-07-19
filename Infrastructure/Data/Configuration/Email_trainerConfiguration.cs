@@ -13,6 +13,13 @@ public class Email_trainerConfiguration : IEntityTypeConfiguration<Email_trainer
 
         builder.ToTable("Emails_trainers");
 
+        builder.Property(p => p.Email_correo)
+        .IsRequired()
+        .HasMaxLength(100);
+
+        builder.HasIndex(p => p.Email_correo)
+        .IsUnique();
+
         //definimos las FOREIGN KEY
 
         builder.HasOne(p => p.Email)

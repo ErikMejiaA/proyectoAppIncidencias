@@ -8,7 +8,6 @@ public class Telefono
     //atributos de la entidad
     [Key]
     public string ? Id_telefono { get; set; }
-    public string ? Numero_telefono { get; set; }
     public string ? Tipo_telefono { get; set; }
     public string ? Descripcion { get; set; }
 

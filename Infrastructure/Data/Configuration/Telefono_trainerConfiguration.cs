@@ -13,6 +13,13 @@ public class Telefono_trainerConfiguration : IEntityTypeConfiguration<Telefono_t
 
         builder.ToTable("Telefonos_trainers");
 
+        builder.Property(p => p.Numero_telefono)
+        .IsRequired()
+        .HasMaxLength(20);
+
+        builder.HasIndex(p => p.Numero_telefono)
+        .IsUnique();
+
         //definimos las FOREIGN KEY
         builder.HasOne(p => p.Trainer)
         .WithMany(p => p.Telefonos_Trainers)
