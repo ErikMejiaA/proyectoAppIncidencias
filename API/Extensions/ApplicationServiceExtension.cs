@@ -1,4 +1,7 @@
 
+using Core.Interfaces;
+using Infrastructure.UnitOfWork;
+
 namespace API.Extensions
 {
     public static class ApplicationServiceExtension
@@ -15,5 +18,12 @@ namespace API.Extensions
             }
         );
 
+        public static void AddAplicacionServices(this IServiceCollection services)
+        {
+            //services.AddScoped<IEstadoInterface, EstadoRepository>();
+            services.AddScoped<IUnitOfWorkInterface, UnitOfWork>();
+        }
+
     }
+    
 }

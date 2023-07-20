@@ -13,7 +13,7 @@ public interface ITelefono_trainerInterface
     IEnumerable<Telefono_trainer> Find(Expression<Func<Telefono_trainer, bool>> expression);
     void Add(Telefono_trainer entity);
     void AddRange(IEnumerable<Telefono_trainer> entities);
-    void remove(Telefono_trainer entity);
+    void Remove(Telefono_trainer entity);
     void RemoveRange(IEnumerable<Telefono_trainer> entities);
     void Update(Telefono_trainer entity);
         

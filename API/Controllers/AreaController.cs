@@ -1,28 +1,37 @@
-
 using Core.Entities;
-using Infrastructure.Data;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
 
 public class AreaController : BaseApiController
 {
-    private readonly proyectoAppInsidenciasContext _context;
-    
-    public AreaController(proyectoAppInsidenciasContext context)
-    {
-       _context = context;
-    }
+     private readonly IUnitOfWorkInterface _UnitOfWork;
+     
+     public AreaController(IUnitOfWorkInterface UnitOfWork)
+     {
+          _UnitOfWork = UnitOfWork;
+     }
 
-    [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<Area>>> Get()
-    {
-         var areas = await _context.Areas.ToListAsync();
-         return Ok(areas);
-    }
+     //METODO GET
+     [HttpGet]
+     [ProducesResponseType(StatusCodes.Status200OK)]
+     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+     public async Task<ActionResult<IEnumerable<Area>>> Get()
+     {
+          var areas = await _UnitOfWork.Areas.GetAllAsync();
+          return Ok(areas);
+     }
+
+     //METODO GET POR ID
+     [HttpGet("{id}")]
+     [ProducesResponseType(StatusCodes.Status200OK)]
+     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+     public async Task<IActionResult> Get(string id)
+     {
+          var area = await _UnitOfWork.Areas.GetByIdAsync(id);
+          return Ok(area);
+     }
         
 }

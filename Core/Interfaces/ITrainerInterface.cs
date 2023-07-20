@@ -10,9 +10,9 @@ public interface ITrainerInterface
 
     Task<Trainer> GetByIdAsync(string id);
     Task<IEnumerable<Trainer>> GetAllAsync();
-    IEnumerable<Trainer> Find(Expression<Func<Trainer>> expression):
+    IEnumerable<Trainer> Find(Expression<Func<Trainer, bool>> expression);
     void Add(Trainer entity);
-    void addRange (IEnumerable<Trainer> entities);
+    void AddRange (IEnumerable<Trainer> entities);
     void Remove(Trainer entity);
     void RemoveRange(IEnumerable<Trainer> entities);
     void Update(Trainer entity);
