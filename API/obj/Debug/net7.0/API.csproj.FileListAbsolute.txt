@@ -139,3 +139,5 @@ D:\Campus Lat\programasEntityFrameworkNETCore\proyectoAppIncidencias\API\obj\Deb
 D:\Campus Lat\programasEntityFrameworkNETCore\proyectoAppIncidencias\API\obj\Debug\net7.0\API.pdb
 D:\Campus Lat\programasEntityFrameworkNETCore\proyectoAppIncidencias\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 D:\Campus Lat\programasEntityFrameworkNETCore\proyectoAppIncidencias\API\obj\Debug\net7.0\ref\API.dll
+D:\Campus Lat\programasEntityFrameworkNETCore\proyectoAppIncidencias\API\bin\Debug\net7.0\AutoMapper.dll
+D:\Campus Lat\programasEntityFrameworkNETCore\proyectoAppIncidencias\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

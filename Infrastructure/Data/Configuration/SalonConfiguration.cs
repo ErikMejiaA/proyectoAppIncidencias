@@ -25,7 +25,7 @@ public class SalonConfiguration : IEntityTypeConfiguration<Salon>
         .IsRequired()
         .HasColumnType("int");
 
-        builder.Property(p => p.Descricion)
+        builder.Property(p => p.Descripcion)
         .IsRequired()
         .HasMaxLength(100);
 

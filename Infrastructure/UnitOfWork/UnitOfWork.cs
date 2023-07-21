@@ -5,7 +5,7 @@ using Infrastructure.Repository;
 
 namespace Infrastructure.UnitOfWork;
 
-public class UnitOfWork : IUnitOfWorkInterface
+public class UnitOfWork : IUnitOfWorkInterface, IDisposable
 {
     //variable context
     private readonly proyectoAppInsidenciasContext _context;
@@ -304,8 +304,14 @@ public class UnitOfWork : IUnitOfWorkInterface
         } 
     }
 
+    public void Dispose()
+    {
+        _context.Dispose(); //destruir el contexto si no se esta Utilizando, liberar memoria
+    }
+
     public Task<int> SaveAsync()
     {
-        return _context.SaveChangesAsync();
+        return _context.SaveChangesAsync(); //guardar los datos enviados por el metodo Post, Delete, Put en la Db
+
     }
 }

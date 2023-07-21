@@ -28,7 +28,7 @@ public class HardwareConfiguration : IEntityTypeConfiguration<Hardware>
         .IsRequired();
 
         builder.HasOne(p => p.Categoria)
-        .WithMany(p => p.hardwares)
+        .WithMany(p => p.Hardwares)
         .HasForeignKey(p => p.Id_categoria)
         .IsRequired();
 

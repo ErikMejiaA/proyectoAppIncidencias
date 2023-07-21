@@ -33,12 +33,16 @@ public class SalonRepository : ISalonInterface
 
     public async Task<IEnumerable<Salon>> GetAllAsync()
     {
-        return await _context.Set<Salon>().ToListAsync();
+        return await _context.Set<Salon>()
+        .Include(p => p.Puestos)
+        .ToListAsync();
     }
 
     public async Task<Salon> GetByIdAsync(string id)
     {
-        return await _context.Set<Salon>().FindAsync(id);
+        return await _context.Set<Salon>()
+        .Include(p => p.Puestos)
+        .FirstOrDefaultAsync(p => p.Id_salon == id);
     }
 
     public void Remove(Salon entity)

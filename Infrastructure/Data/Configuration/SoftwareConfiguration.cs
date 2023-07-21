@@ -22,10 +22,9 @@ public class SoftwareConfiguration : IEntityTypeConfiguration<Software>
         .HasMaxLength(100);
 
         //definimos las FOREIGN KRY
-
         builder.HasOne(p => p.Tipo_software)
         .WithMany(p => p.Softwares)
-        .HasForeignKey(p => p.Id_software)
+        .HasForeignKey(p => p.Id_tipo_software)
         .IsRequired();
 
         builder.HasOne(p => p.Categoria)

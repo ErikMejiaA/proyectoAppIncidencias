@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(proyectoAppInsidenciasContext))]
-    [Migration("20230719113916_InitialCreateVersionDos")]
-    partial class InitialCreateVersionDos
+    [Migration("20230720223823_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,7 +129,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<string>("Id_tipo_hardware")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("varchar(10)");
 
                     b.HasKey("Id_hardware");
 
@@ -213,7 +213,7 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
 
-                    b.Property<string>("Descricion")
+                    b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -257,13 +257,16 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("varchar(10)");
 
                     b.Property<string>("Id_tipo_software")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
 
                     b.HasKey("Id_software");
 
                     b.HasIndex("Id_categoria");
 
                     b.HasIndex("Id_puesto");
+
+                    b.HasIndex("Id_tipo_software");
 
                     b.ToTable("Softwares", (string)null);
                 });
@@ -315,7 +318,8 @@ namespace Infrastructure.Data.Migrations
             modelBuilder.Entity("Core.Entities.Tipo_hardware", b =>
                 {
                     b.Property<string>("Id_tipo_hardware")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -514,7 +518,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasOne("Core.Entities.Tipo_software", "Tipo_software")
                         .WithMany("Softwares")
-                        .HasForeignKey("Id_software")
+                        .HasForeignKey("Id_tipo_software")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

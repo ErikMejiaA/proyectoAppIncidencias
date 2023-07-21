@@ -13,7 +13,7 @@ public class Categoria
 
     //definimos la ICollection a la entidad 
     public ICollection<Software> ? Softwares { get; set; }
-    public ICollection<Hardware> ? hardwares { get; set; }
+    public ICollection<Hardware> ? Hardwares { get; set; }
     public ICollection<Incidencia> ? Incidencias { get; set; }
 
         

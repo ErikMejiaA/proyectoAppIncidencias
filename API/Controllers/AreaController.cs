@@ -1,3 +1,5 @@
+using API.Dtos;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -8,30 +10,49 @@ namespace API.Controllers;
 public class AreaController : BaseApiController
 {
      private readonly IUnitOfWorkInterface _UnitOfWork;
-     
-     public AreaController(IUnitOfWorkInterface UnitOfWork)
+     private readonly IMapper mapper;
+
+     public AreaController(IUnitOfWorkInterface UnitOfWork, IMapper mapper)
      {
+
           _UnitOfWork = UnitOfWork;
+          this.mapper = mapper;
      }
 
      //METODO GET
      [HttpGet]
      [ProducesResponseType(StatusCodes.Status200OK)]
      [ProducesResponseType(StatusCodes.Status400BadRequest)]
-     public async Task<ActionResult<IEnumerable<Area>>> Get()
+     public async Task<List<AreaDto>> Get()
      {
           var areas = await _UnitOfWork.Areas.GetAllAsync();
-          return Ok(areas);
+          return this.mapper.Map<List<AreaDto>>(areas);
      }
 
      //METODO GET POR ID
      [HttpGet("{id}")]
      [ProducesResponseType(StatusCodes.Status200OK)]
      [ProducesResponseType(StatusCodes.Status400BadRequest)]
-     public async Task<IActionResult> Get(string id)
+     public async Task<ActionResult<AreaDto>> Get(string id)
      {
           var area = await _UnitOfWork.Areas.GetByIdAsync(id);
-          return Ok(area);
+          return this.mapper.Map<AreaDto>(area);
      }
+
+     //METODO POST 
+     /*[HttpPost]
+     [ProducesResponseType(StatusCodes.Status200OK)]
+     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+     public async Task<List<AreaDto>> Post(Area area)
+     {
+          this._UnitOfWork.Areas.Add(area);
+          await _UnitOfWork.SaveAsync();
+          if (area == null) {
+               return BadRequest();
+          }
+          //return CreatedAtAction(nameof(Post), new {id = area.Id_area}, area);
+          return this.mapper.Map<AreaDto>(nameof(Post), new {id = area.Id_area}, area);
+     }*/
+
         
 }

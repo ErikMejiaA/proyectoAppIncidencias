@@ -33,12 +33,20 @@ public class PuestoRepository : IPuestoInterface
 
     public async Task<IEnumerable<Puesto>> GetAllAsync()
     {
-        return await _context.Set<Puesto>().ToListAsync();
+        return await _context.Set<Puesto>()
+        .Include(p => p.Hardwares)
+        .Include(p => p.Incidencias)
+        .Include(p => p.Softwares)
+        .ToListAsync();
     }
 
     public async Task<Puesto> GetByIdAsync(string id)
     {
-        return await _context.Set<Puesto>().FindAsync(id);
+        return await _context.Set<Puesto>()
+        .Include(p => p.Hardwares)
+        .Include(p => p.Incidencias)
+        .Include(p => p.Softwares)
+        .FirstOrDefaultAsync(p => p.Id_puesto == id);
     }
 
     public void Remove(Puesto entity)

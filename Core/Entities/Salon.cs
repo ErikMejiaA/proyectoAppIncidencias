@@ -10,7 +10,7 @@ public class Salon
     public string ? Id_salon { get; set; }
     public string ? Nombre_salon { get; set; }
     public int Numero_puestos { get; set; }
-    public string ? Descricion { get; set; }
+    public string ? Descripcion { get; set; }
 
     //llave foranea 
     public string ? Id_area { get; set; }

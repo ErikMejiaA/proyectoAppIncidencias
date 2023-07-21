@@ -13,6 +13,10 @@ public class Tipo_hardwareConfiguration : IEntityTypeConfiguration<Tipo_hardware
 
         builder.ToTable("Tipos_hardwares");
 
+        builder.Property(p => p.Id_tipo_hardware)
+        .IsRequired()
+        .HasMaxLength(10);
+
         builder.Property(p => p.Nombre_hardware)
         .IsRequired()
         .HasMaxLength(50);

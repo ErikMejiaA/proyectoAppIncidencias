@@ -33,12 +33,16 @@ public class TelefonoRepository : ITelefonoInterface
 
     public async Task<IEnumerable<Telefono>> GetAllAsync()
     {
-        return await _context.Set<Telefono>().ToListAsync();
+        return await _context.Set<Telefono>()
+        .Include(p => p.Telefonos_Trainers)
+        .ToListAsync();
     }
 
     public async Task<Telefono> GetByIdAsync(string id)
     {
-        return await _context.Set<Telefono>().FindAsync(id);
+        return await _context.Set<Telefono>()
+        .Include(p => p.Telefonos_Trainers)
+        .FirstOrDefaultAsync(p => p.Id_telefono == id);
     }
 
     public void Remove(Telefono entity)

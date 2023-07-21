@@ -33,12 +33,20 @@ public class TrainerRepository : ITrainerInterface
 
     public async Task<IEnumerable<Trainer>> GetAllAsync()
     {
-        return await _context.Set<Trainer>().ToListAsync();
+        return await _context.Set<Trainer>()
+        .Include(p => p.Incidencias)
+        .Include(p => p.Telefonos_Trainers)
+        .Include(p => p.Emails_Trainers)
+        .ToListAsync();
     }
 
     public async Task<Trainer> GetByIdAsync(string id)
     {
-        return await _context.Set<Trainer>().FindAsync(id);
+        return await _context.Set<Trainer>()
+        .Include(p => p.Incidencias)
+        .Include(p => p.Telefonos_Trainers)
+        .Include(p => p.Emails_Trainers)
+        .FirstOrDefaultAsync(p => p.Id_trainer == id);
     }
 
     public void Remove(Trainer entity)

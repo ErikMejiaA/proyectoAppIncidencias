@@ -33,12 +33,16 @@ public class Tipo_incidenciaRepository : ITipo_incidenciaInterface
 
     public async Task<IEnumerable<Tipo_incidencia>> GetAllAsync()
     {
-        return await _context.Set<Tipo_incidencia>().ToListAsync();
+        return await _context.Set<Tipo_incidencia>()
+        .Include(p => p.Incidencias)
+        .ToListAsync();
     }
 
     public async Task<Tipo_incidencia> GetByIdAsync(string id)
     {
-        return await _context.Set<Tipo_incidencia>().FindAsync(id);
+        return await _context.Set<Tipo_incidencia>()
+        .Include(p => p.Incidencias)
+        .FirstOrDefaultAsync(p => p.Id_tipo_incidencia == id);
     }
 
     public void Remove(Tipo_incidencia entity)

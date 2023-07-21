@@ -33,7 +33,9 @@ public class EmailRepository : IEmailInterface
 
     public async Task<IEnumerable<Email>> GetAllAsync()
     {
-        return await _context.Set<Email>().ToListAsync();
+        return await _context.Set<Email>()
+        .Include(p => p.Emails_Trainers)
+        .ToListAsync();
     }
 
     public async Task<Email> GetByIdAsync(string id)

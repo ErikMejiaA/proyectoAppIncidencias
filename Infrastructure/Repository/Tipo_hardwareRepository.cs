@@ -33,12 +33,16 @@ public class Tipo_hardwareRepository : ITipo_hardwareInterface
 
     public async Task<IEnumerable<Tipo_hardware>> GetAllAsync()
     {
-        return await _context.Set<Tipo_hardware>().ToListAsync();
+        return await _context.Set<Tipo_hardware>()
+        .Include(p => p.Hardwares)
+        .ToListAsync();
     }
 
     public async Task<Tipo_hardware> GetByIdAsync(string id)
     {
-        return await _context.Set<Tipo_hardware>().FindAsync(id);
+        return await _context.Set<Tipo_hardware>()
+        .Include(p => p.Hardwares)
+        .FirstOrDefaultAsync(p => p.Id_tipo_hardware == id);
     }
 
     public void Remove(Tipo_hardware entity)

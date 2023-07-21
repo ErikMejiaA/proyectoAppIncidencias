@@ -1,3 +1,4 @@
+using System.Reflection;
 using API.Extensions;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.ConfigureCors(); //configuramos las cors para los endpoint 
 builder.Services.AddAplicacionServices(); //habilitar los repositorios y iterfces de la UnitOfWork
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly()); //habilitamos el automapper
 
 //creamos las dependecias y la conexion a la base de datos 
 builder.Services.AddDbContext<proyectoAppInsidenciasContext>(optionsBuilder =>

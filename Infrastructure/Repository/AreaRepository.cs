@@ -33,12 +33,16 @@ public class AreaRepository : IAreaInterface
 
     public async Task<IEnumerable<Area>> GetAllAsync()
     {
-        return await _context.Set<Area>().ToListAsync();
+        return await _context.Set<Area>()
+        .Include(p => p.Salones)
+        .ToListAsync();
     }
 
     public async Task<Area> GetByIdAsync(string id)
     {
-        return await _context.Set<Area>().FindAsync(id);
+        return await _context.Set<Area>()
+        .Include(p => p.Salones)
+        .FirstOrDefaultAsync(p => p.Id_area == id);
     }
 
     public void Remove(Area entity)
