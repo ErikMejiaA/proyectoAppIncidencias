@@ -40,10 +40,10 @@ public class AreaController : BaseApiController
      }
 
      //METODO POST 
-     /*[HttpPost]
+     [HttpPost]
      [ProducesResponseType(StatusCodes.Status200OK)]
      [ProducesResponseType(StatusCodes.Status400BadRequest)]
-     public async Task<List<AreaDto>> Post(Area area)
+     public async Task<ActionResult<AreaDto>> Post(Area area)
      {
           this._UnitOfWork.Areas.Add(area);
           await _UnitOfWork.SaveAsync();
@@ -51,8 +51,8 @@ public class AreaController : BaseApiController
                return BadRequest();
           }
           //return CreatedAtAction(nameof(Post), new {id = area.Id_area}, area);
-          return this.mapper.Map<AreaDto>(nameof(Post), new {id = area.Id_area}, area);
-     }*/
+          return CreatedAtAction(nameof(Post), new {id = area.Id_area}, area);
+     }
 
         
 }
