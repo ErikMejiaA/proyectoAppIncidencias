@@ -8,7 +8,7 @@ public interface IEmail_trainerInterface
 {
     //implemtacion de los metodos para el CRUD
 
-    Task<Email_trainer> GetByIdAsync(string id);
+    Task<Email_trainer> GetByIdAsync(string idT, string idE);
     Task<IEnumerable<Email_trainer>> GetAllAsync();
     IEnumerable<Email_trainer> Find(Expression<Func<Email_trainer, bool>> expression);
     void Add(Email_trainer entity);

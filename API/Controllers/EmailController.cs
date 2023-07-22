@@ -35,6 +35,9 @@ public class EmailController : BaseApiController
     public async Task<ActionResult<EmailDto>> Get(string id)
     {
         var email = await _UnitOfWork.Emails.GetByIdAsync(id);
+        if (email == null) {
+            return NotFound();
+        }
         return this.mapper.Map<EmailDto>(email);
     }
 
@@ -51,6 +54,7 @@ public class EmailController : BaseApiController
             return BadRequest();
         }
         return CreatedAtAction(nameof(Post), new {id = email.Id_email}, email);
+        //return this.mapper.Map<EmailDto>(email);
     }
 
     //METODO PUT

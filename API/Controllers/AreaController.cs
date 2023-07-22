@@ -36,6 +36,9 @@ public class AreaController : BaseApiController
      public async Task<ActionResult<AreaDto>> Get(string id)
      {
           var area = await _UnitOfWork.Areas.GetByIdAsync(id);
+          if (area == null) {
+               return NotFound();
+          }
           return this.mapper.Map<AreaDto>(area);
      }
 
@@ -52,6 +55,7 @@ public class AreaController : BaseApiController
                return BadRequest();
           }
           return CreatedAtAction(nameof(Post), new {id = area.Id_area}, area);
+          //return this.mapper.Map<AreaDto>(area);
      }
 
      //METODO PUT

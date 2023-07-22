@@ -8,7 +8,7 @@ public interface ITelefono_trainerInterface
 {
     //implentacion de los metodos para el CRUD
 
-    Task<Telefono_trainer> GetByIdAsync(string id);
+    Task<Telefono_trainer> GetByIdAsync(string idT, string idTel);
     Task<IEnumerable<Telefono_trainer>> GetAllAsync();
     IEnumerable<Telefono_trainer> Find(Expression<Func<Telefono_trainer, bool>> expression);
     void Add(Telefono_trainer entity);

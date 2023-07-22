@@ -232,7 +232,7 @@ public class UnitOfWork : IUnitOfWorkInterface, IDisposable
         }
     }
 
-    public ITipo_hardwareInterface Tipos_Hardwares 
+    public ITipo_hardwareInterface Tipos_hardwares 
     { 
         get
         {
@@ -268,7 +268,7 @@ public class UnitOfWork : IUnitOfWorkInterface, IDisposable
         }
     }
 
-    public ITipo_softwareInterface Tipos_Softwares 
+    public ITipo_softwareInterface Tipos_softwares 
     {
         get
         {

@@ -35,6 +35,9 @@ public class CategoriaController : BaseApiController
     public async Task<ActionResult<CategoriaDto>> Get(string id)
     {
         var categoria = await _UnitOfWork.Categorias.GetByIdAsync(id);
+        if (categoria == null) {
+            return NotFound();
+        }
         return this.mapper.Map<CategoriaDto>(categoria);
     }
 
@@ -51,6 +54,7 @@ public class CategoriaController : BaseApiController
             return BadRequest();
         }
         return CreatedAtAction(nameof(Post), new {id = categoria.Id_categoria}, categoria);
+        //return this.mapper.Map<CategoriaDto>(categoria);
     }
 
     //METODO PUT
